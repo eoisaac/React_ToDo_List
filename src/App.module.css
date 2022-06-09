@@ -1,0 +1,27 @@
+.root {
+	width: 100vw;
+	height: 100vh;
+}
+
+.container {
+	width: 100vw;
+	max-width: 736px;
+	max-height: 500px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+.newTaskForm {
+	display: inline-flex;
+	position: relative;
+	top: -26px;
+	width: 100%;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+@media (min-width: 480px) {
+	.container {
+		padding: 0;
+	}
+}
