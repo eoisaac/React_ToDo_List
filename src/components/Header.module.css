@@ -1,6 +1,6 @@
 .header {
 	width: 100vw;
-	height: 200px;
+	height: 120px;
 	display: grid;
 	place-items: center;
 	background-color: var(--gray-700);
@@ -16,4 +16,10 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+@media (min-width: 480px) {
+  .header {
+    height: 200px;
+  }
 }

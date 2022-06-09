@@ -1,0 +1,30 @@
+.infoBlue,
+.infoPurple {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+.infoBlue {
+	color: var(--blue);
+}
+
+.infoPurple {
+	color: var(--purple);
+}
+
+.counter {
+	padding: 2px 8px;
+	color: var(--gray-200);
+	border-radius: calc(var(--border-radius) + 1px);
+	background-color: var(--gray-400);
+}
+
+@media (min-width: 480px) {
+	.infoBlue,
+	.infoPurple {
+		font-size: 1rem;
+	}
+}
