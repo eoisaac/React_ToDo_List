@@ -1,10 +1,14 @@
 import './global.css';
 import styles from './App.module.css';
+import { PlusCircle } from 'phosphor-react';
 
-import { Header } from './components/Header';
-import { Input } from './components/Input';
-import { CreateButton } from './components/CreateButton';
-import { TaskInfo } from './components/TaskInfo';
+import {	
+	Header,
+	Input,
+	BoxButton,
+	TaskInfo,
+	EmptyAlert
+} from './Index';
 
 export const App = () => {
   return (
@@ -18,13 +22,20 @@ export const App = () => {
 						id="taskInpt" 
 						placeholder="Adicione uma nova tarefa" 
 					/>
-					<CreateButton />
+					<BoxButton>
+						Criar
+						<PlusCircle weight="bold" />
+					</BoxButton>
 				</form>
 
 				<div className={styles.infoWrapper}>
 					<TaskInfo name="Tarefas criadas" color="Blue" />
 					<TaskInfo name="Concluídas" color="Purple"/>
 				</div>
+
+				<ul className={styles.tasksList}>
+					<EmptyAlert />
+				</ul>
 			</div>
 		</main>
 	);
