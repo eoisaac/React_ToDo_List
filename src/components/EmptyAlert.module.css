@@ -7,4 +7,5 @@
 	gap: 1rem;
 	text-align: center;
 	color: var(--gray-300);
+	border-top: solid 1px var(--gray-400);
 }

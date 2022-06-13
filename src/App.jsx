@@ -1,14 +1,7 @@
 import './global.css';
 import styles from './App.module.css';
 import { PlusCircle } from 'phosphor-react';
-
-import {	
-	Header,
-	Input,
-	BoxButton,
-	TaskInfo,
-	EmptyAlert
-} from './Index';
+import { Header, Input, BoxButton, TaskInfo, EmptyAlert, Task } from './Index';
 
 export const App = () => {
   return (
@@ -34,7 +27,9 @@ export const App = () => {
 				</div>
 
 				<ul className={styles.tasksList}>
-					<EmptyAlert />
+					{/* <EmptyAlert /> */}
+					<Task name="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."/>
+					<Task name="Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer."/>
 				</ul>
 			</div>
 		</main>
