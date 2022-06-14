@@ -5,7 +5,7 @@ import { Trash } from 'phosphor-react';
 
 export const Task = ({ name }) => {
 	return (
-		<li className={styles.task}>
+		<li className={styles.task} key={name}>
 			<input type="checkbox" className={styles.checkbox} />
 
 			<p className={styles.taskName}>

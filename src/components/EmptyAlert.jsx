@@ -6,7 +6,6 @@ export const EmptyAlert = () => {
 		<div className={styles.alert}>
 			<img src={clipboardImg} alt="Ilustração prancheta" />
 
-
 		<div>
 			<strong>
 				Você ainda não tem tarefas cadastradas
