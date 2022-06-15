@@ -1,9 +1,18 @@
+.wrapper {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: space-between;
+	padding-bottom: 2rem;
+}
+
 .infoBlue,
 .infoPurple {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
-	font-size: 0.8rem;
+	font-size: 0.875rem;
 	font-weight: 700;
 }
 
