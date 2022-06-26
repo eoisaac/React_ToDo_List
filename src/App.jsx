@@ -10,10 +10,7 @@ export const App = () => {
   const [concludedTasksAmount, setConcludedTasksAmount] = useState(0);
 
   const isNewTaskNameEmpty = newTaskName.length === 0;
-
-  const handleNewTaskNameChange = () => {
-    setNewTaskName(event.target.value);
-  };
+  const handleNewTaskNameChange = (event) => setNewTaskName(event.target.value);
 
   const getNewTaskData = () => ({
     id: Date.now(),
@@ -34,6 +31,15 @@ export const App = () => {
     decrease: () => setConcludedTasksAmount(concludedTasksAmount - 1),
   };
 
+  const handleDeleteTask = (taskToDeleteId) => {
+    const tasksWithoutDeletedTask = tasks.filter(({ id }) => {
+      return id !== taskToDeleteId;
+    });
+
+    setTasks(tasksWithoutDeletedTask);
+    concludedTasksAmount && handleConcludedTasksAmount.decrease();
+  };
+
   return (
     <main>
       <Header />
@@ -51,7 +57,14 @@ export const App = () => {
             onChange={handleNewTaskNameChange}
           />
 
-          <BoxButton isDisabled={isNewTaskNameEmpty}>
+          <BoxButton
+            title={
+              isNewTaskNameEmpty
+                ? 'Digite uma nova tarefa'
+                : 'Criar nova tarefa'
+            }
+            isDisabled={isNewTaskNameEmpty}
+          >
             Criar
             <PlusCircle weight="bold" />
           </BoxButton>
@@ -74,6 +87,7 @@ export const App = () => {
                   name={name}
                   concluded={concluded}
                   onCheckboxChange={handleConcludedTasksAmount}
+                  onDeleteTask={handleDeleteTask}
                 />
               );
             })

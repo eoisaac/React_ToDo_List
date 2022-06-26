@@ -1,10 +1,9 @@
 import styles from './IconButton.module.css';
 
-export const IconButton = ({ children }) => {
-
-	return (
-		<button className={styles.button}>
-			{children}
-		</button>
-	);
+export const IconButton = ({ children, title, onClick }) => {
+  return (
+    <button className={styles.button} title={title} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
