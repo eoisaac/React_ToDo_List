@@ -4,7 +4,7 @@ import clipboardImg from '../assets/clipboard-img.svg';
 export const EmptyAlert = () => {
   return (
     <div className={styles.alert}>
-      <img src={clipboardImg} alt="Ilustração prancheta" />
+      <img src={clipboardImg} className={styles.clipboardImg} alt="Ilustração prancheta" />
 
       <div>
         <strong>Você ainda não tem tarefas cadastradas</strong>
