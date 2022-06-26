@@ -1,4 +1,4 @@
-import './global.css';
+import './style/global.css';
 import styles from './App.module.css';
 import { PlusCircle } from 'phosphor-react';
 import { Header, BoxButton, InfosWrapper, EmptyAlert, Task } from './Index';
@@ -7,27 +7,35 @@ import { useState } from 'react';
 export const App = () => {
   const [tasks, setTasks] = useState([]);
   const [newTaskName, setNewTaskName] = useState('');
-  const [createdTasksAmount, setCreatedTasksAmound] = useState(0);
-	const [concludedTasksAmount, setConcludedTasksAmount] = useState(0);
+  const [concludedTasksAmount, setConcludedTasksAmount] = useState(0);
 
   const isNewTaskNameEmpty = newTaskName.length === 0;
-
-  const handleCreateNewTask = () => {
-    event.preventDefault();
-    setTasks([...tasks, newTaskName]);
-    setNewTaskName('');
-    setCreatedTasksAmound(createdTasksAmount + 1);
-
-    event.target.reset();
-    event.target.focus();
-  };
 
   const handleNewTaskNameChange = () => {
     setNewTaskName(event.target.value);
   };
 
+  const getNewTaskData = () => ({
+    id: Date.now(),
+    name: newTaskName,
+    concluded: false,
+  });
+
+  const handleCreateNewTask = (event) => {
+    event.preventDefault();
+
+    setTasks([...tasks, getNewTaskData()]);
+    setNewTaskName('');
+    event.target.reset();
+  };
+
+  const handleConcludedTasksAmount = {
+    increase: () => setConcludedTasksAmount(concludedTasksAmount + 1),
+    decrease: () => setConcludedTasksAmount(concludedTasksAmount - 1),
+  };
+
   return (
-    <main className={styles.root}>
+    <main>
       <Header />
 
       <div className={styles.container}>
@@ -49,17 +57,25 @@ export const App = () => {
           </BoxButton>
         </form>
 
-				<InfosWrapper  
-					createdTasksAmount={createdTasksAmount} 
-					concludedTasksAmount={concludedTasksAmount}
-				/>
+        <InfosWrapper
+          createdTasksAmount={tasks.length}
+          concludedTasksAmount={concludedTasksAmount}
+        />
 
         <ul className={styles.tasksList}>
           {tasks.length <= 0 ? (
             <EmptyAlert />
           ) : (
-            tasks.map((task) => {
-              return <Task name={task} />;
+            tasks.map(({ id, name, concluded }) => {
+              return (
+                <Task
+                  key={id}
+                  id={id}
+                  name={name}
+                  concluded={concluded}
+                  onCheckboxChange={handleConcludedTasksAmount}
+                />
+              );
             })
           )}
         </ul>
