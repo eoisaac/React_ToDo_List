@@ -28,8 +28,8 @@
 }
 
 ::selection {
-	background-color: var(--blue);
 	color: var(--gray-100);
+	background-color: var(--blue);
 }
 
 body {

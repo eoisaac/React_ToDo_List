@@ -1,5 +1,5 @@
 .task {
-  height: 72px;
+  min-height: 72px;
   width: 100%;
   display: inline-flex;
   align-items: flex-start;
