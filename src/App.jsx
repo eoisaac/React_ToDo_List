@@ -2,7 +2,7 @@ import './style/global.css';
 import styles from './App.module.css';
 import { PlusCircle } from 'phosphor-react';
 import { Header, BoxButton, InfosWrapper, EmptyAlert, Task } from './Index';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -26,19 +26,27 @@ export const App = () => {
     event.target.reset();
   };
 
-  const handleConcludedTasksAmount = {
-    increase: () => setConcludedTasksAmount(concludedTasksAmount + 1),
-    decrease: () => setConcludedTasksAmount(concludedTasksAmount - 1),
+  const handleOnConcludeTask = (taskID, isConcluded) => {
+    const updatedTasks = tasks.map((task) => {
+      return task.id === taskID ? { ...task, concluded: isConcluded } : task;
+    });
+
+    setTasks(updatedTasks);
   };
 
-  const handleDeleteTask = (taskToDeleteId) => {
+  const handleDeleteTask = (taskToDeleteID) => {
     const tasksWithoutDeletedTask = tasks.filter(({ id }) => {
-      return id !== taskToDeleteId;
+      return id !== taskToDeleteID;
     });
 
     setTasks(tasksWithoutDeletedTask);
-    concludedTasksAmount && handleConcludedTasksAmount.decrease();
+    setConcludedTasksAmount(concludedTasksAmount - 1);
   };
+
+  useEffect(() => {
+    const concludedTasks = tasks.filter(({ concluded }) => concluded).length;
+    setConcludedTasksAmount(concludedTasks);
+  }, [tasks]);
 
   return (
     <main>
@@ -86,7 +94,7 @@ export const App = () => {
                   id={id}
                   name={name}
                   concluded={concluded}
-                  onCheckboxChange={handleConcludedTasksAmount}
+                  onConclude={handleOnConcludeTask}
                   onDeleteTask={handleDeleteTask}
                 />
               );

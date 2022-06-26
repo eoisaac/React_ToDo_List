@@ -8,14 +8,14 @@ export const Task = ({
   id,
   name,
   concluded,
-  onCheckboxChange,
+  onConclude,
   onDeleteTask,
 }) => {
   const [isConcluded, setIsConcluded] = useState(concluded);
 
   const handleIsConcluded = () => {
     setIsConcluded(!isConcluded);
-    isConcluded ? onCheckboxChange.decrease() : onCheckboxChange.increase();
+    onConclude(id, !isConcluded);
   };
 
   const handleOnDeleteTask = () => onDeleteTask(id);
