@@ -31,6 +31,7 @@ export const Task = ({
             : 'Marcar tarefa como concluída'
         }
         onChange={handleIsConcluded}
+        checked={isConcluded}
       />
 
       <p className={isConcluded ? styles.concluded : styles.notConcluded}>

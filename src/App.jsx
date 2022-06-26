@@ -5,7 +5,13 @@ import { Header, BoxButton, InfosWrapper, EmptyAlert, Task } from './Index';
 import { useState, useEffect } from 'react';
 
 export const App = () => {
-  const [tasks, setTasks] = useState([]);
+  const setOnLocalStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+  };
+
+  const getOfLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
+
+  const [tasks, setTasks] = useState(getOfLocalStorage('tasks') || []);
   const [newTaskName, setNewTaskName] = useState('');
   const [concludedTasksAmount, setConcludedTasksAmount] = useState(0);
 
@@ -45,7 +51,9 @@ export const App = () => {
 
   useEffect(() => {
     const concludedTasks = tasks.filter(({ concluded }) => concluded).length;
+
     setConcludedTasksAmount(concludedTasks);
+    setOnLocalStorage('tasks', tasks);
   }, [tasks]);
 
   return (
