@@ -1,4 +1,4 @@
-#  ToDo ✔️
+# ToDo ✔️
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/eoisaac/ToDo_App?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/eoisaac/ToDo_App?style=for-the-badge)
@@ -38,15 +38,15 @@ This project was made using the following technologies:
 
 ## 👨‍💻 Author
 
-<img src="https://github.com/eoisaac.png" width="100px" alt="Isaac's picture">
+<img src="https://github.com/eoisaac.png" width="100px" style="border-radius: 8px" alt="Isaac's picture">
 
 [Isaac Santiago](https://github.com/eoisaac)
 
-<!-- ## 📝 License
+## 📝 License
 
 This project has a license, you can access the file to see more details    
-[![MIT License badge]()](LICENSE.md) -->
+[![MIT License badge](https://github.com/eoisaac/ToDo_App/blob/main/LICENSE.md)](LICENSE.md)
 
 ---
 
-[⬆ Back to top](#TypeFast)
+[⬆ Back to top](#ToDo)
