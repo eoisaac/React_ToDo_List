@@ -22,10 +22,10 @@
 	box-sizing: border-box;
 }
 
-:focus {
+/* :focus {
   outline: transparent;
   box-shadow: 0 0 0 2px var(--blue);
-}
+} */
 
 ::selection {
 	color: var(--gray-100);

@@ -19,8 +19,8 @@
 }
 
 .titleImage {
-  width: auto;
-  height: auto;
+  width: 126px;
+  height: 48px;
 }
 
 @media (min-width: 480px) {

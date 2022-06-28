@@ -4,13 +4,7 @@ import { IconButton } from './IconButton';
 import { Trash } from 'phosphor-react';
 import { useState } from 'react';
 
-export const Task = ({
-  id,
-  name,
-  concluded,
-  onConclude,
-  onDeleteTask,
-}) => {
+export const Task = ({ id, name, concluded, onConclude, onDeleteTask }) => {
   const [isConcluded, setIsConcluded] = useState(concluded);
 
   const handleIsConcluded = () => {
@@ -22,17 +16,24 @@ export const Task = ({
 
   return (
     <li className={styles.task} id={id}>
-      <input
-        type="checkbox"
-        className={styles.checkbox}
-        title={
-          isConcluded
+      <div className={styles.checkbox}>
+        <input
+          type="checkbox"
+          id="checkbox"
+          title={
+            isConcluded
+              ? 'Desmarcar tarefa como concluída'
+              : 'Marcar tarefa como concluída'
+          }
+          onChange={handleIsConcluded}
+          checked={isConcluded}
+        />
+        <label htmlFor="checkbox" className={styles.label}>
+          {isConcluded
             ? 'Desmarcar tarefa como concluída'
-            : 'Marcar tarefa como concluída'
-        }
-        onChange={handleIsConcluded}
-        checked={isConcluded}
-      />
+            : 'Marcar tarefa como concluída'}
+        </label>
+      </div>
 
       <p className={isConcluded ? styles.concluded : styles.notConcluded}>
         {name}
