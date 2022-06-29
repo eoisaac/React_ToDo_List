@@ -12,6 +12,30 @@
 }
 
 .checkbox {
+  appearance: none;
+  width: 17.45px;
+  height: 17.45px;
+  position: relative;
+  cursor: pointer;
+  border: solid 2px var(--blue);
+  border-radius: 50%;
+  transition: background-color, 0.1s;
+}
+
+.checkbox::after {
+  content: url('../assets/check-icon.svg');
+  position: absolute;
+  inset: -1px 1px;
+  opacity: 0; 
+}
+
+.checkbox:checked:after {
+  opacity: 1;
+}
+
+.checkbox:checked {
+  border-color: var(--purple-dark);
+  background-color: var(--purple-dark);
 }
 
 .label {
@@ -29,14 +53,17 @@
 .concluded,
 .notConcluded {
   flex: 1;
-  font-size: 1rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  transition:  color, 0.1s;
 }
 
 .concluded {
-	color: var(--gray-300);
-	text-decoration-line: line-through;
+  color: var(--gray-300);
+  text-decoration-line: line-through;
 }
 
 .notConcluded {
-	color: var(--gray-100);
+  color: var(--gray-100);
 }

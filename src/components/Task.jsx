@@ -16,7 +16,7 @@ export const Task = ({ id, name, concluded, onConclude, onDeleteTask }) => {
 
   return (
     <li className={styles.task} id={id}>
-      <div className={styles.checkbox}>
+      <div>
         <input
           type="checkbox"
           id="checkbox"
@@ -25,6 +25,7 @@ export const Task = ({ id, name, concluded, onConclude, onDeleteTask }) => {
               ? 'Desmarcar tarefa como concluída'
               : 'Marcar tarefa como concluída'
           }
+          className={styles.checkbox}
           onChange={handleIsConcluded}
           checked={isConcluded}
         />

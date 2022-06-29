@@ -76,7 +76,7 @@ export const App = () => {
           <BoxButton
             title={
               isNewTaskNameEmpty
-                ? 'Digite uma nova tarefa'
+                ? 'Adicione uma nova tarefa'
                 : 'Criar nova tarefa'
             }
             isDisabled={isNewTaskNameEmpty}
