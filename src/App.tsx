@@ -1,47 +1,58 @@
 import './style/global.css';
 import styles from './App.module.css';
 import { PlusCircle } from 'phosphor-react';
-import { Header, BoxButton, InfosWrapper, EmptyAlert, Task } from './Index';
-import { useState, useEffect } from 'react';
+import { Header, BoxButton, InfosWrapper, EmptyAlert, Task } from './index';
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
+
+interface Task {
+  id: string;
+  name: string;
+  concluded: boolean;
+}
 
 export const App = () => {
-  const setOnLocalStorage = (key, value) => {
+  const setOnLocalStorage = (key: string, value: []) => {
     localStorage.setItem(key, JSON.stringify(value));
   };
 
-  const getOfLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
+  const getOfLocalStorage = (key: string) => {
+    return JSON.parse(localStorage.getItem(key) || '[]');
+  };
 
   const [tasks, setTasks] = useState(getOfLocalStorage('tasks') || []);
   const [newTaskName, setNewTaskName] = useState('');
   const [concludedTasksAmount, setConcludedTasksAmount] = useState(0);
 
   const isNewTaskNameEmpty = newTaskName.length === 0;
-  const handleNewTaskNameChange = (event) => setNewTaskName(event.target.value);
+  const handleNewTaskNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setNewTaskName(event.target.value);
+  };
 
-  const getNewTaskData = () => ({
-    id: Date.now(),
+  const getNewTaskData = (): Task => ({
+    id: Date.now().toString(),
     name: newTaskName,
     concluded: false,
   });
 
-  const handleCreateNewTask = (event) => {
+  const handleCreateNewTask = (event: FormEvent) => {
     event.preventDefault();
 
     setTasks([...tasks, getNewTaskData()]);
     setNewTaskName('');
     event.target.reset();
+    event.target.focus();
   };
 
-  const handleOnConcludeTask = (taskID, isConcluded) => {
-    const updatedTasks = tasks.map((task) => {
+  const handleOnConcludeTask = (taskID: string, isConcluded: boolean) => {
+    const updatedTasks: [Task] = tasks.map((task: Task) => {
       return task.id === taskID ? { ...task, concluded: isConcluded } : task;
     });
 
     setTasks(updatedTasks);
   };
 
-  const handleDeleteTask = (taskToDeleteID) => {
-    const tasksWithoutDeletedTask = tasks.filter(({ id }) => {
+  const handleDeleteTask = (taskToDeleteID: string) => {
+    const tasksWithoutDeletedTask = tasks.filter(({ id }: Task) => {
       return id !== taskToDeleteID;
     });
 
@@ -50,7 +61,9 @@ export const App = () => {
   };
 
   useEffect(() => {
-    const concludedTasks = tasks.filter(({ concluded }) => concluded).length;
+    const concludedTasks = tasks.filter(
+      ({ concluded }: Task) => concluded
+    ).length;
 
     setConcludedTasksAmount(concludedTasks);
     setOnLocalStorage('tasks', tasks);
@@ -95,7 +108,7 @@ export const App = () => {
           {tasks.length <= 0 ? (
             <EmptyAlert />
           ) : (
-            tasks.map(({ id, name, concluded }) => {
+            tasks.map(({ id, name, concluded }: Task) => {
               return (
                 <Task
                   key={id}

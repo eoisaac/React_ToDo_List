@@ -4,7 +4,21 @@ import { IconButton } from './IconButton';
 import { Trash } from 'phosphor-react';
 import { useState } from 'react';
 
-export const Task = ({ id, name, concluded, onConclude, onDeleteTask }) => {
+interface TaskProps {
+  id: string;
+  name: string;
+  concluded: boolean;
+  onConclude: (id: string, isConcluded: boolean) => void;
+  onDeleteTask: (id: string) => void;
+}
+
+export const Task = ({
+  id,
+  name,
+  concluded,
+  onConclude,
+  onDeleteTask,
+}: TaskProps) => {
   const [isConcluded, setIsConcluded] = useState(concluded);
 
   const handleIsConcluded = () => {

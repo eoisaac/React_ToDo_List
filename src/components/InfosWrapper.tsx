@@ -1,6 +1,14 @@
 import styles from './InfosWrapper.module.css';
 
-export const InfosWrapper = ({ createdTasksAmount, concludedTasksAmount }) => {
+interface InfosWrapperProps {
+  createdTasksAmount: number;
+  concludedTasksAmount: number;
+}
+
+export const InfosWrapper = ({
+  createdTasksAmount,
+  concludedTasksAmount,
+}: InfosWrapperProps) => {
   return (
     <div className={styles.wrapper}>
       <div>

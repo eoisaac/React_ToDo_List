@@ -45,7 +45,7 @@ This project was made using the following technologies:
 ## 📝 License
 
 This project has a license, you can access the file to see more details    
-[![MIT License badge](https://github.com/eoisaac/ToDo_App/blob/main/LICENSE.md)](LICENSE.md)
+[![MIT License badge](https://img.shields.io/github/license/eoisaac/ToDo_App?color=green&style=flat-square)](LICENSE.md)
 
 ---
 
