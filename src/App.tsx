@@ -29,7 +29,7 @@ export const App = () => {
   };
 
   const getNewTaskData = (): Task => ({
-    id: Date.now().toString(),
+    id: `${String(tasks.length + 1).padStart(2, '0')}/${newTaskName}`,
     name: newTaskName,
     concluded: false,
   });
