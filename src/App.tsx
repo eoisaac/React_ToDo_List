@@ -39,8 +39,6 @@ export const App = () => {
 
     setTasks([...tasks, getNewTaskData()]);
     setNewTaskName('');
-    event.target.reset();
-    event.target.focus();
   };
 
   const handleOnConcludeTask = (taskID: string, isConcluded: boolean) => {
@@ -84,6 +82,7 @@ export const App = () => {
             placeholder="Adicione uma nova tarefa"
             className={styles.input}
             onChange={handleNewTaskNameChange}
+            value={newTaskName}
           />
 
           <BoxButton
