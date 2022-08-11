@@ -1,5 +1,5 @@
 import './style/global.css';
-import styles from './App.module.css';
+import styles from './style/App.module.css';
 import { PlusCircle } from 'phosphor-react';
 import { Header, BoxButton, InfosWrapper, EmptyAlert, Task } from './index';
 import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
